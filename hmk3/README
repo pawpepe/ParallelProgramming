@@ -1,0 +1,12 @@
+Anna Paula Pawlicka Maule 
+gl0779 
+Homework 3
+October 15th, 2017 
+
+Implemented a pthread program that sums 2 matrices 128X128 using 8 threads. 
+
+Syncronized the threads using pthread_join()
+
+The output is printed on the cmd and also saved in a file called "output.txt" 
+
+
