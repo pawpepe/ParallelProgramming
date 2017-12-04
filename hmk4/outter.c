@@ -14,7 +14,7 @@ int main(){
 	int s_seq; 
 
 	#pragma omp parallel for private(sequence, aux, s_seq)	
-	for(p=2; p<=4; p++){
+	for(p=8; p<=14; p++){
 		 s_seq =pow(2,p);
                 
 		//alocating memory for the array of numbers to be summed and it's auxiliar one 
@@ -30,14 +30,14 @@ int main(){
 		int a =0;
 		while(pow(2,jump) < s_seq){
 	
-			#pragma omp parallel
+			//#pragma omp parallel
 			{	
 				if(a==0){
 					printf("numbrs of threads: %d\n", omp_get_thread_num());
 				}
 				a=1;
 			
-				#pragma omp for private(i) private(j) 
+				//#pragma omp for private(i) private(j)
 	 			for(i=s_seq-1; i>0; i--) {
 
 					j = i-pow(2,jump);
@@ -49,13 +49,8 @@ int main(){
 						i=0;
 					}	
 			
-			}
-				
-			
-				/**#pragma omp for private(i)
-				for(i=0; i<s_seq; i++){
-					sequence[i] = aux[i];
-				}**/
+			         }
+
 				
 			}
 			jump++;

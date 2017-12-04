@@ -1,0 +1,20 @@
+set terminal png size 800,500 enhanced font "Helvetica,20"
+set output 'output.png'
+
+red = "#FF0000"; green = "#00FF00"; blue = "#0000FF"; skyblue = "#87CEEB"; light ="#b5eef9"; yellow "#ffd700"; purple="#009933"
+set yrange [0:20]
+set style data histogram
+set style histogram cluster gap 1
+set style fill solid
+set boxwidth 0.9
+set xtics format ""
+set grid ytics
+
+set title "Balanced Tree Speedup"
+plot "TREE.dat" using 2:xtic(1) title "8" linecolor rgb red, \
+            '' using 3 title "9" linecolor rgb blue, \
+            '' using 4 title "10" linecolor rgb green, \
+            '' using 5 title "11" linecolor rgb skyblue,\
+	    '' using 6 title "12" linecolor rgb yellow,\
+	    '' using 7 title "13" linecolor rgb light,\
+            '' using 8 title "14" linecolor rgb purple	

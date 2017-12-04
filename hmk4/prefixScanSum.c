@@ -13,7 +13,7 @@ int main(){
 	start = clock();
 	int s_seq; 
 
-	#pragma omp parallel for private(sequence, aux, s_seq)	
+	//#pragma omp parallel for private(sequence, aux, s_seq)	
 	for(p=2; p<=4; p++){
 		 s_seq =pow(2,p);
                 
@@ -37,7 +37,7 @@ int main(){
 				}
 				a=1;
 			
-				#pragma omp for private(i) private(j) 
+				#pragma omp for private(i) private(j)
 	 			for(i=s_seq-1; i>0; i--) {
 
 					j = i-pow(2,jump);
@@ -47,15 +47,13 @@ int main(){
 						}
 					else{
 						i=0;
-					}	
+					}
+	
 			
-			}
+				}
+
+			        #pragma omp barrier
 				
-			
-				/**#pragma omp for private(i)
-				for(i=0; i<s_seq; i++){
-					sequence[i] = aux[i];
-				}**/
 				
 			}
 			jump++;

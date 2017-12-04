@@ -13,7 +13,7 @@ void init(int **sequence, int n){
 
 int main(){
 
-	clock_t start, end;
+	double start, end;
 	int *sequence;
 	double cpu_time_used;
 	int s_seq,d,i,j;		
@@ -21,7 +21,7 @@ int main(){
 	int aux, index1, index2,index, p;
         //#pragma omp parallel for private(sequence)
         for(u=1; u<=8; u*=2){
-           start = clock();
+           start = omp_get_wtime();
 	for(p=8; p<=14; p++){
 		s_seq =pow(2,p);
                 
@@ -73,25 +73,22 @@ int main(){
 		
    			}
 			#pragma omp barrier 
-			/**for(int l=0; l < s_seq; l++)
-			    printf("%d ", sequence[l]);
-		 	
-		         printf("\n");**/
+			
 
 		}
 		sequence[0] =last;
-		/**printf("\n\n\n\n");
+		printf("\n\n\n\n");
 		for(i=0; i < s_seq; i++){
 			printf("%d ", sequence[i]);
-		} **/	
+		} 	
 		
 		
 		free(sequence);
 		
 
       } printf("Threads: %d Time: ", u);
-	end = clock();
-	cpu_time_used = ((double)(end-start))/CLOCKS_PER_SEC;
+	end = omp_get_wtime();
+	cpu_time_used = end - start;
 	
 	printf("%f\n", cpu_time_used);
 			

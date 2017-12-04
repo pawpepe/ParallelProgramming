@@ -13,10 +13,10 @@ void init(int **sequence, int n){
 
 int main(){
 
-	clock_t start, end;
+	double start, end;
 	int *sequence;
 	double cpu_time_used;
-	start = clock();
+	start = opm_get_wtime();;
 	int s_seq,d,i,j;		
         int log2;
 	int aux, index, index2,p;
@@ -71,8 +71,8 @@ int main(){
       }
 
        
-	end = clock();
-	cpu_time_used = ((double)(end-start))/CLOCKS_PER_SEC;
+	end = opm_get_wtime();
+	cpu_time_used = end - start;
 	
 	printf("%f\n", cpu_time_used);
 	return 0;
